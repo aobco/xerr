@@ -89,6 +89,10 @@ func Wrap(err error, message string) error {
 	}
 }
 
+func Trace(err error) error {
+	return Wrapf(err, "")
+}
+
 func Wrapf(err error, format string, args ...interface{}) error {
 	if err == nil {
 		return nil
