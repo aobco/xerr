@@ -1,9 +1,5 @@
 package xerr
 
-import (
-	"github.com/aobco/log"
-)
-
 type BizCode string
 
 type BizMsg string
@@ -26,9 +22,7 @@ func (biz BizResponseMap) Response(err error) *BizResponse {
 	}
 	errWrap := new(ErrWrap)
 	as := As(err, &errWrap)
-	println("as", as)
 	if as {
-		log.Errorf("%+v", errWrap)
 		if bizMsg, ok := biz[errWrap.Code()]; ok {
 			return &BizResponse{
 				Code: errWrap.code,

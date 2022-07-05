@@ -3,7 +3,6 @@ package xerr
 import (
 	"errors"
 	"fmt"
-	"github.com/aobco/log"
 	"testing"
 )
 
@@ -37,10 +36,9 @@ var FakeBizRsp = BizResponseMap{
 
 func TestXer(t *testing.T) {
 	if err := callChainTrace2(); err != nil {
-		log.Errorf("%+v", err)
+		fmt.Printf("%+v\n", err)
 		response := FakeBizRsp.Response(err)
 		println("------------- response --------------")
 		fmt.Printf("%+v\n", response)
-		println("------------- response --------------")
 	}
 }

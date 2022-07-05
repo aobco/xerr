@@ -190,7 +190,7 @@ func (w *ErrWrap) Code() BizCode {
 	return w.code
 }
 
-func (w *ErrWrap) Error() string { return "[" + string(w.code) + "]: " + w.cause.Error() }
+func (w *ErrWrap) Error() string { return "BizCode=[" + string(w.code) + "]: " + w.cause.Error() }
 
 func (w *ErrWrap) Cause() error { return w.cause }
 
@@ -199,7 +199,7 @@ func (w *ErrWrap) Format(s fmt.State, verb rune) {
 	case 'v':
 		if s.Flag('+') {
 			fmt.Fprintf(s, "%+v\n", w.Cause())
-			io.WriteString(s, "["+string(w.code)+"]")
+			io.WriteString(s, "BizCode=["+string(w.code)+"]")
 			return
 		}
 		fallthrough
