@@ -1,12 +1,8 @@
 package xerr
 
-type BizCode string
-
-type BizMsg string
-
 type BizResponse struct {
-	Code BizCode
-	Msg  BizMsg
+	Code string
+	Msg  string
 }
 
 var BizResponseUnknown = &BizResponse{
@@ -14,7 +10,7 @@ var BizResponseUnknown = &BizResponse{
 	Msg:  "unknown error",
 }
 
-type BizResponseMap map[BizCode]BizMsg
+type BizResponseMap map[string]string
 
 func (biz BizResponseMap) Response(err error) *BizResponse {
 	if err == nil {

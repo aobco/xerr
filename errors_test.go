@@ -31,7 +31,7 @@ func callChainTrace2() error {
 }
 
 var FakeBizRsp = BizResponseMap{
-	BizCode("FakeBizCode"): BizMsg("This a fake biz response msg"),
+	"FakeBizCode": "This a fake biz response msg",
 }
 
 func TestXer(t *testing.T) {

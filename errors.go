@@ -165,7 +165,7 @@ func Cause(err error) error {
 	return err
 }
 
-func WithCode(err error, code BizCode) error {
+func WithCode(err error, code string) error {
 	if err == nil {
 		return nil
 	}
@@ -181,16 +181,16 @@ func WithCodef(err error, format string, args ...interface{}) error {
 	}
 	return &ErrWrap{
 		cause: err,
-		code:  BizCode(fmt.Sprintf(format, args...)),
+		code:  fmt.Sprintf(format, args...),
 	}
 }
 
 type ErrWrap struct {
 	cause error
-	code  BizCode
+	code  string
 }
 
-func (w *ErrWrap) Code() BizCode {
+func (w *ErrWrap) Code() string {
 	return w.code
 }
 
@@ -212,7 +212,7 @@ func (w *ErrWrap) Format(s fmt.State, verb rune) {
 	}
 }
 
-func BizWrap(err error, code BizCode, message string) error {
+func BizWrap(err error, code string, message string) error {
 	if err == nil {
 		return nil
 	}
